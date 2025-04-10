@@ -126,5 +126,7 @@ http://http://50.17.33.165:8080/NETFLIX-1.2.2/#
 Additional Notes:
 Ensure that your security group for the EC2 instance allows inbound traffic on port 8080 (or whichever port your Tomcat server is using).
 If you encounter any issues, check the Tomcat logs located at /apache-tomcat-9.0.100/logs/.
-<img width="960" alt="Image" src="https://github.com/user-attachments/assets/9873d6e1-5224-4928-82a7-167dbb285d72" />
+
+
+<img width="960" alt="Image" src="https://github.com/user-attachments/assets/984edbfb-ed20-4417-97b4-19e876227b16" />
 

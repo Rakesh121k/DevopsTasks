@@ -117,7 +117,7 @@ index.html - The entry HTML file.
 7. Install Apache HTTP Server
 To serve the built application, you'll use Apache HTTP Server. Install it with:
 
-sudo yum install httpd -y
+sudo apt install httpd -y
 After the installation completes, verify that the Apache HTTP Server (httpd) is available.
 
 8. Copy Build Files to Apache Directory

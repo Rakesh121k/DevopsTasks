@@ -1,9 +1,9 @@
 
-# **Deploy Python Flask App with Gunicorn on Amazon Linux**
+# **Deploy Python Flask App with Gunicorn on Ubuntu**
 
 ## **Prerequisites**
 
-- Amazon Linux EC2 instance running
+- ubuntu instance running
 - Root/sudo access
 - Python 3 and pip
 - Git installed
@@ -15,23 +15,23 @@
 
 ```bash
 sudo -i
-yum update -y
+apt update -y
 ```
 
 ---
 
-## **2. Check and Install Python 3**
+## **2. Check and Install Python3**
 
 Check if Python 3 is already installed:
 
 ```bash
-yum list installed | grep -i python3
+ python3
 ```
 
 If not installed:
 
 ```bash
-sudo yum install python3 -y
+sudo apt install python3 -y
 ```
 
 ---
@@ -39,8 +39,8 @@ sudo yum install python3 -y
 ## **3. Install Required Packages**
 
 ```bash
-yum install git -y
-yum install python3-pip -y
+apt install git -y
+apt install python3-pip -y
 ```
 
 ---
@@ -50,8 +50,8 @@ yum install python3-pip -y
 Navigate to your Flask app directory:
 
 ```bash
-git clone <git-url>
-cd /root/example-voting-app/vote
+git clone <https://github.com/Rakesh121k/sample-python-codedeploy.git>
+cd sample-python-codedeploy.git
 ```
 
 ---
@@ -63,7 +63,8 @@ Install required packages:
 ```bash
 pip3 install -r requirements.txt
 pip3 install flask
-pip3 install redis
+sudo apt install pip3-nose
+sudo apt install pip3-coverage
 pip3 install gunicorn
 ```
 
@@ -77,11 +78,14 @@ If you change my_app, then reference the new name in the remaining resolution st
 
 ```bash
 python3 -m venv myenv
+
 ```
 
 To activate the environment, source the activate file in the bin directory under your project directory:
 
 ```bash
+source myenv/bin/activate
+python3 -m venv myenv
 source myenv/bin/activate
 ```
 Your shell prompt should change, indicating you're in the virtual environment.
@@ -93,22 +97,23 @@ Your shell prompt should change, indicating you're in the virtual environment.
 Test the Flask app:
 
 ```bash
-python3 app.py
+python3 application.py
 ```
 you should see:
 
 ```bash
-(myenv) [root@ip-172-31-24-252 vote]# python3 app.py
- * Serving Flask app 'app'
+(myenv) ubuntu@ip-172-31-84-222:~/sample-python-codedeploy$ python3 application.py
+ * Serving Flask app 'application'
  * Debug mode: on
 WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
  * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:80
- * Running on http://172.31.24.252:80
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.84.222:5000
 Press CTRL+C to quit
  * Restarting with stat
  * Debugger is active!
- * Debugger PIN: 138-173-870
+ * Debugger PIN: 883-660-229
+
 ```
 
 ---
@@ -131,7 +136,7 @@ pip3 install gunicorn
 Run Gunicorn manually to test:
 
 ```bash
-gunicorn app:app -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0
+gunicorn app:application -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0
 ```
 
 you should see successful startup logs and incoming requests in real time.
@@ -146,7 +151,7 @@ We need to convert this as a backend service, by creating a .service file
 Create a systemd service file:
 
 ```bash
-vi /etc/systemd/system/vote.service
+vi /etc/systemd/system/application.service
 ```
 
 Add the following content:
@@ -182,42 +187,18 @@ systemctl daemon-reload
 Start the Flask service:
 
 ```bash
-systemctl start vote.service
+systemctl start application.service
 ```
 
 Check service status:
 
 ```bash
-systemctl status vote.service
-```
-
-```bash
-(myenv) [root@ip-172-31-24-252 vote]# systemctl daemon-reload
-(myenv) [root@ip-172-31-24-252 vote]# systemctl start  vote.service
-(myenv) [root@ip-172-31-24-252 vote]# systemctl status  vote.service
-● vote.service - Gunicorn instance to serve app1
-     Loaded: loaded (/etc/systemd/system/vote.service; disabled; preset: disabled)
-     Active: active (running) since Thu 2025-04-10 16:20:53 UTC; 8s ago
-   Main PID: 27590 (gunicorn)
-      Tasks: 5 (limit: 4656)
-     Memory: 81.6M
-        CPU: 566ms
-     CGroup: /system.slice/vote.service
-             ├─27590 /root/example-voting-app/vote/myenv/bin/python3 /root/example-voting-app/vote/myenv/bin/gunicorn app:app -b>
-             ├─27591 /root/example-voting-app/vote/myenv/bin/python3 /root/example-voting-app/vote/myenv/bin/gunicorn app:app -b>
-             ├─27592 /root/example-voting-app/vote/myenv/bin/python3 /root/example-voting-app/vote/myenv/bin/gunicorn app:app -b>
-             ├─27593 /root/example-voting-app/vote/myenv/bin/python3 /root/example-voting-app/vote/myenv/bin/gunicorn app:app -b>
-             └─27594 /root/example-voting-app/vote/myenv/bin/python3 /root/example-voting-app/vote/myenv/bin/gunicorn app:app -b>
-
-Apr 10 16:20:53 ip-172-31-24-252.ec2.internal systemd[1]: Started vote.service - Gunicorn instance to serve app1.
-Apr 10 16:20:53 ip-172-31-24-252.ec2.internal gunicorn[27590]: [2025-04-10 16:20:53 +0000] [27590] [INFO] Starting gunicorn 23.0>
-
-```
+systemctl status application
 
 Enable the service to start on boot:
 
 ```bash
-systemctl enable vote.service
+systemctl enable application.service
 ```
 
 ---
@@ -226,28 +207,19 @@ systemctl enable vote.service
 
 Open your browser and visit:
 
-```
-http://<EC2_PUBLIC_IP>:80 or ex:- http://98.84.170.173/ or http://98.84.170.173:80
-```
-
 Replace `<EC2_PUBLIC_IP>` with your instance's public IP address.
-
-
-![Image](https://github.com/user-attachments/assets/286193f1-5a77-4d2b-bcc8-dae980bb8cca)
+        http://3.83.243.99:8000/
 
 used commands:
-
-```bash
-(myenv) [root@ip-172-31-24-252 vote]# history
-    1  yum update -y
-    2  yum install git -y
-    3  git clone https://github.com/Ai-TechNov/example-voting-app
-    4  cd example-voting-app/vote/
+    1  apt update -y
+    2  apt install git -y
+    3  git clone https://github.com/Rakesh121k/sample-python-codedeploy.git
+    4  cd sample-python-codedeploy
     5  ll
     6  cat requirements.txt
-    7  yum install pip3 -y
+    7  apt install pip3 -y
     8  pip3
-    9  yum install python3-pip -y
+    9  apt install python3-pip -y
    10  pip3 install -r requirements.txt
    11  python3 -m venv my_app/env
    12  source env/bin/activate
@@ -260,14 +232,13 @@ used commands:
    19  pip3 install redis
    20  pip3 install gunicorn
    21  python3 app.py
-   22  gunicorn app:app -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0
+   22  gunicorn app:application -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0
    23  pwd
    24  vi /etc/systemd/system/vote.service
    25  cat /etc/systemd/system/vote.service
    26  systemctl daemon-reload
    27  systemctl start  vote.service
    28  systemctl status  vote.service
-   29  history
 
 ```
 ---

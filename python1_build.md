@@ -164,8 +164,8 @@ After=network.target
 [Service]
 User=root
 Group=root
-WorkingDirectory=/root/sampl-pythoncode-Deploy
-ExecStart=/root/sample-pythoncode-Deploy/myenv/bin/gunicorn app:application -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0
+WorkingDirectory=/root/sample-python-codedeploy
+ExecStart=/root/sample-python-codedeploy/myenv/bin/gunicorn app:application -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0
 TimeoutStopSec=90
 Restart=always
 KillMode=mixed

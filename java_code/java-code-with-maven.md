@@ -128,5 +128,5 @@ Ensure that your security group for the EC2 instance allows inbound traffic on p
 If you encounter any issues, check the Tomcat logs located at /apache-tomcat-9.0.100/logs/.
 
 
-<img width="960" alt="Image" src="https://github.com/user-attachments/assets/984edbfb-ed20-4417-97b4-19e876227b16" />
+<img width="960" alt="Image" src="https://github.com/user-attachments/assets/a2480af5-f522-442f-bc62-9d44c258571b" />
 

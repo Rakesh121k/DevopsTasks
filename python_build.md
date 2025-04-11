@@ -1,5 +1,5 @@
 
-# **Deploy Python Flask App with Gunicorn on Amazon Linux**
+# **Deploy Python Flask App with Gunicorn on Ubuntu**
 
 ## **Prerequisites**
 

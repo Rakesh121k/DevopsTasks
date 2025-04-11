@@ -136,7 +136,7 @@ pip3 install gunicorn
 Run Gunicorn manually to test:
 
 ```bash
-gunicorn app:application -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0
+gunicorn app:application -b 0.0.0.0:8000 --log-file - --access-logfile - --workers 4 --keep-alive 0
 ```
 
 you should see successful startup logs and incoming requests in real time.
@@ -164,8 +164,8 @@ After=network.target
 [Service]
 User=root
 Group=root
-WorkingDirectory=/root/example-voting-app/vote
-ExecStart=/root/example-voting-app/vote/myenv/bin/gunicorn app:app -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0
+WorkingDirectory=/root/sampl-pythoncode-Deploy
+ExecStart=/root/sample-pythoncode-Deploy/myenv/bin/gunicorn app:application -b 0.0.0.0:80 --log-file - --access-logfile - --workers 4 --keep-alive 0
 TimeoutStopSec=90
 Restart=always
 KillMode=mixed

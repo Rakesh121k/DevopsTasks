@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Sensations";
+    src: url("./assets/Sensations.ttf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+/*
+@font-face {
+    font-family: "Gilroy-ExtraBold";
+    src: url("./assets/Gilroy-ExtraBold.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
+} */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    /* font-family: "Gilroy-light"; */
+    font-family: "Roboto", sans-serif;
+}
+#main {
+    width: 100%;
+    height: 100vh;
+}
+#back {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+#back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #efefef;
+    font-size: 100px;
+}
+
+#top_wrapper {
+    margin: 0 auto;
+    width: 80%;
+    height: 100vh;
+    max-width: 1920px;
+    position: relative;
+}
+#nav {
+    width: 100%;
+    margin: 20px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+#nav img {
+    height: 80px;
+    padding-right: 30px;
+}
+#nav .navbar {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+#nav .cartbox {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+#nav .navbar a,
+#nav .cartbox a {
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 0.8vw;
+    font-weight: normal;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    pointer-events: all;
+    letter-spacing: 0.5px;
+}
+.logo {
+    font-family: "Sensations", sans-serif;
+    color: #efefef;
+    letter-spacing: 6px;
+    font-size: 5vw;
+}

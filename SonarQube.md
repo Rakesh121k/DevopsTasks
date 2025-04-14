@@ -53,8 +53,6 @@ curl ifconfig.me
 Access SonarQube at:  
 **http://54.167.116.111:9000**  
 Login: `admin / admin`
-Reset admin Password
-
 ---
 
 ##  2. Configure SonarQube Projects (Web UI)
@@ -69,8 +67,6 @@ choose **Local project**
 
 give **Required details** 
 
-![Image](https://github.com/user-attachments/assets/7d8031d4-3095-45ff-b26b-febafc850d29)
-
 Select **Use global settings**, then choose **Locally**
 
 Choose **Locally** 
@@ -84,6 +80,8 @@ Generate a token:
 
 
 In 2. choose **the package/code** and **copy the code**
+  # In Java-build server after build, compiling and packaging, for results we can see in sonarqube server like this as 
+
 <img width="960" alt="Image" src="https://github.com/user-attachments/assets/b84af356-3f1f-4dda-92b4-33298619cf69" />
 
 <img width="960" alt="Image" src="https://github.com/user-attachments/assets/cca1f93a-20ce-4480-bd28-a46ce6be1722" />

@@ -30,12 +30,12 @@ sudo apt install maven
 # Step 3: Clone and Build Java Project
 Clone Git Repository
 ```bash
-git clone https://github.com/Rishitha2707/Build-Tasks.git
+git clone https://github.com/Rakesh121k/jenkins-java-project.git
 ```
 
 Navigate to Java Project Directory
 ```bash
-cd Build-Tasks/Java-code/
+cd jenkins-java-project
 ```
 
 
@@ -92,7 +92,7 @@ Check SonarQube Status
 Open a browser and navigate to:
 ```bash
 http://<your-server-ip>:9000/
-http://3.85.118.219:9000/
+http:// 54.167.116.111:9000/
 ```
 
 
@@ -111,7 +111,7 @@ It will generate:
 3.A Maven command like this:
 ```bash
 mvn sonar:sonar \
-  -Dsonar.host.url=http://100.26.59.12:9000 \
+  -Dsonar.host.url=http:// 54.167.116.111:9000 \
   -Dsonar.login=0a990aa3bd0ddd0ffc6c01b7d3cad7559b1dd27c
 ```
 
@@ -124,4 +124,9 @@ You will now see:
 1.Project name
 2.Code quality metrics
 3.Bugs, vulnerabilities, and code smells
+
+<img width="960" alt="Image" src="https://github.com/user-attachments/assets/b84af356-3f1f-4dda-92b4-33298619cf69" />
+
+<img width="960" alt="Image" src="https://github.com/user-attachments/assets/cca1f93a-20ce-4480-bd28-a46ce6be1722" />
+
 

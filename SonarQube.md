@@ -82,6 +82,8 @@ Generate a token:
 In 2. choose **the package/code** and **copy the code**
   # In Java-build server after build, compiling and packaging, for results we can see in sonarqube server like this as 
 
+✅ Output will show analysis and upload to SonarQube.
+
 <img width="960" alt="Image" src="https://github.com/user-attachments/assets/b84af356-3f1f-4dda-92b4-33298619cf69" />
 
 <img width="960" alt="Image" src="https://github.com/user-attachments/assets/cca1f93a-20ce-4480-bd28-a46ce6be1722" />
@@ -102,25 +104,32 @@ apt install npm -y
 
 ---
 
-##  Java Project Analysis (Maven)
+##  JavaScript Project Analysis (NPM + SonarScanner)
 
-###  Clone and Build Java Project  
+###   Clone JS Project and Setup
 ```bash
-git clone https://github.com/<your-java-repo>.git
-cd Java-Blog
+git clone  git clone https://github.com/Rakesh121k/newmewjavascript.git
+cd newmewjavascript/
 mvn package
 ```
 ```bash
 root@ip-172-31-26-213:~/Documentation/java_code# ll
-total 64
-drwxr-xr-x 4 root root  4096 Apr 13 09:33 ./
-drwxr-xr-x 6 root root  4096 Apr 13 09:33 ../
--rw-r--r-- 1 root root 15759 Apr 13 09:33 MySQLDesign.mwb
--rw-r--r-- 1 root root 15550 Apr 13 09:33 MySQLDesign.mwb.bak
--rw-r--r-- 1 root root  4494 Apr 13 09:33 pom.xml
--rw-r--r-- 1 root root  7262 Apr 13 09:33 readme.md
-drwxr-xr-x 3 root root  4096 Apr 13 09:33 src/
-drwxr-xr-x 7 root root  4096 Apr 13 09:33 target/
+total 200
+drwxrwxr-x   7 ubuntu ubuntu   4096 Apr 14 05:27 ./
+drwxr-x---   9 ubuntu ubuntu   4096 Apr 14 05:26 ../
+-rw-rw-r--   1 ubuntu ubuntu    526 Apr 14 05:26 .eslintrc.cjs
+drwxrwxr-x   8 ubuntu ubuntu   4096 Apr 14 05:26 .git/
+-rw-rw-r--   1 ubuntu ubuntu    253 Apr 14 05:26 .gitignore
+-rw-rw-r--   1 ubuntu ubuntu    451 Apr 14 05:26 README.md
+drwxrwxr-x   3 ubuntu ubuntu   4096 Apr 14 05:27 dist/
+-rw-rw-r--   1 ubuntu ubuntu    957 Apr 14 05:26 index.html
+drwxrwxr-x 215 ubuntu ubuntu  12288 Apr 14 05:27 node_modules/
+-rw-rw-r--   1 ubuntu ubuntu 142499 Apr 14 05:27 package-lock.json
+-rw-rw-r--   1 ubuntu ubuntu    651 Apr 14 05:27 package.json
+drwxrwxr-x   2 ubuntu ubuntu   4096 Apr 14 05:26 public/
+drwxrwxr-x   4 ubuntu ubuntu   4096 Apr 14 05:26 src/
+-rw-rw-r--   1 ubuntu ubuntu    163 Apr 14 05:26 vite.config.js
+
 
 ```
 
@@ -135,35 +144,11 @@ mvn clean verify sonar:sonar \
   -Dsonar.login=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-✅ Output will show analysis and upload to SonarQube.
 
----
 
-##  JavaScript Project Analysis (NPM + SonarScanner)
 
-###  Clone JS Project and Setup  
-```bash
-git clone https://github.com/<your-js-repo>.git
-cd js_code/
-npm install
-npm install -g @sonar/scan
-```
-```bash
-root@ip-172-31-26-213:~/Documentation/js_code# ll
-total 208
-drwxr-xr-x 4 root root   4096 Apr 13 09:33 ./
-drwxr-xr-x 6 root root   4096 Apr 13 09:33 ../
-drwxr-xr-x 3 root root   4096 Apr 13 09:33 dist/
--rw-r--r-- 1 root root 172684 Apr 13 09:33 package-lock.json
--rw-r--r-- 1 root root   1086 Apr 13 09:33 package.json
--rw-r--r-- 1 root root   6041 Apr 13 09:33 readme.md
-drwxr-xr-x 4 root root   4096 Apr 13 09:33 src/
--rw-r--r-- 1 root root    322 Apr 13 09:33 tsconfig.json
--rw-r--r-- 1 root root   1317 Apr 13 09:33 webpack.config.js
-```
-![Image](https://github.com/user-attachments/assets/9ac205ef-08ba-4fa9-a0a5-c2250b2d4fc7)
 
-### 📄 Create `sonar-project.properties`
+###  Create `sonar-project.properties`
 ```bash
 vi sonar-project.properties
 ```

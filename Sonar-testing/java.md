@@ -1,4 +1,4 @@
-SonarQube Testing of Java(Two-Server Setup)
+# SonarQube Testing of Java(Two-Server Setup)
 
 ##  Goal  
 Set up ** two separate servers**:  

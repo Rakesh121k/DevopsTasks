@@ -95,7 +95,6 @@ Use cd .. repeatedly to return to your home or project directory after setup.
 # Step 5: Access SonarQube in Browser
 Open your web browser and go to:
 ```bash
-http://3.85.118.219:9000/
 http://<ip-address>:9000/
 ```
 

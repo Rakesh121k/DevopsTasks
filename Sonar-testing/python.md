@@ -15,20 +15,21 @@ sudo apt install git
 
 Install Python and pip
 ```bash
-sudo apt install python3 python3-pip
+sudo apt install python3-pip
 ```
 
 
 # Step 3: Clone and Prepare Python Project
 Clone Your GitHub Repository
 ```bash
-git clone https://github.com/Ai-TechNov/example-voting-app.git
+git clone https://github.com/Rakesh121k/sample-python-codedeploy.git
+
 ```
 
 
 Navigate to Python Project Folder
 ```bash
-cd example-voting-app/vote/
+cd sample-python-codedeploy
 ```
 
 Set Up Virtual Environment

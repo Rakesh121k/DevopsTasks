@@ -15,13 +15,17 @@ sudo apt install git
 
 Install Java Runtime (Required for SonarQube)
 ```bash
-sudo apt install openjdk-11-jre-headless
+sudo apt install openjdk-17-jdk -y
 ```
 
 
 Install Node.js and NPM
 ```bash
-sudo apt install npm
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install -y nodejs
+node -v
+npm -v
+
 ```
 
 
@@ -35,12 +39,7 @@ git clone https://github.com/Rakesh121k/newmewjavascript.git
 Navigate to JavaScript Project Directory
 ```bash
 cd newmewjavascript/
-```
-
-Install Project Dependencies
-```bash
-npm install
-```
+``
 
 Build the Project
 ```bash
@@ -49,53 +48,51 @@ npm run build
 This compiles or bundles the JavaScript code depending on the project setup (e.g., Webpack or other build tools).
 
 
-# Step 4: Install and Set Up SonarQube
-Download SonarQube
-```bash
-wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-6.7.7.zip
-```
+# Step 4: Install and Set Up SonarQube and sonar scanner
 
-List the Directory to Confirm the Download
-```bash
-ls
-```
+ Create a SonarQube user
+bash
+''''''
+sudo adduser --system --no-create-home --group --disabled-login sonar
 
-Install Unzip Utility
-```bash
+# Download and extract SonarQube
+
+bash
+''''''
+cd /opt
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.4.1.88267.zip
 sudo apt install unzip
-```
+sudo unzip sonarqube-10.4.1.88267.zip
+sudo mv sonarqube-10.4.1.88267 sonarqube
+sudo chown -R sonar:sonar sonarqube
 
-
-Extract SonarQube
-```bash
-unzip sonarqube-6.7.7.zip
-```
-
-
-Navigate to SonarQube Binary Folder
-```bash
-cd sonarqube-6.7.7/bin/linux-x86-64/
-```
-
-Start SonarQube Server
-```bash
+# Start SonarQube
+bash
+''''''
+sudo su - sonar
+cd /opt/sonarqube/bin/linux-x86-64/
 ./sonar.sh start
-```
+Then access SonarQube at http://your-server-ip:9000.
 
-
-Check SonarQube Status
-```bash
-./sonar.sh status
-```
-
-
-Use cd .. repeatedly to return to your home or project directory after setup.
-
+#  Install SonarScanner
+bash
+'''''
+cd /opt
+sudo wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip
+sudo unzip sonar-scanner-cli-5.0.1.3006-linux.zip
+sudo mv sonar-scanner-5.0.1.3006-linux sonar-scanner
+3.1 Configure environment
+bash
+Copy
+Edit
+echo 'export PATH=$PATH:/opt/sonar-scanner/bin' >> ~/.bashrc
+source ~/.bashrc
 
 # Step 5: Access SonarQube in Browser
 Open your web browser and go to:
 ```bash
 http://<ip-address>:9000/
+http://107.23.115.168:9000/
 ```
 
 
@@ -109,33 +106,37 @@ Create a new project
 Select language (JavaScript), OS, and CI method (choose "Manually")
 
 
-# Step 6: Analyze Project with SonarScanner
-Install SonarScanner
-SonarScanner isn't included by default — install it with:
-```bash
-sudo apt install unzip curl
-curl -O https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856-linux.zip
-unzip sonar-scanner-cli-4.8.0.2856-linux.zip
-sudo mv sonar-scanner-4.8.0.2856-linux /opt/sonar-scanner
-```
-
-
-Add it to your path:
-```bash
-echo 'export PATH=$PATH:/opt/sonar-scanner/bin' >> ~/.bashrc
-source ~/.bashrc
-```
-
-
+# Step 6: Analyze Project with sonarqube
 Run SonarScanner with Token (from UI)
 Paste the command provided by SonarQube after project creation:
 ```bash
 sonar-scanner \
-  -Dsonar.projectKey=js \
+  -Dsonar.projectKey=javascript \
   -Dsonar.sources=. \
-  -Dsonar.host.url=http://3.85.118.219:9000 \
-  -Dsonar.login=b07b580b495569b149249672fe15c05ce714ecdd
+  -Dsonar.host.url=http://107.23.115.168:9000 \
+  -Dsonar.token=sqp_dc17afe17184f1cea14bd4e53a096c4c252b0a99
+
 ```
+==> Added a file sonar.properties file in code where package.json and index.html are located.
+like
+vi  sonar.properties
+# Unique key for your project in SonarQube
+sonar.projectKey=newmewjavascript
+
+# Project name as it will appear in SonarQube
+sonar.projectName=NewMewJavaScript
+
+# Optional: version of your project
+sonar.projectVersion=1.0
+
+# The source code directory to analyze
+sonar.sources=.
+
+# SonarQube server URL
+sonar.host.url=http://107.23.115.168:9000
+
+# Authentication token (replace with your actual token)
+sonar.login=sqp_dc17afe17184f1cea14bd4e53a096c4c252b0a99
 
 
 ✅ Step 7: View Code Quality Report

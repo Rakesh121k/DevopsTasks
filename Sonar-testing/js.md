@@ -28,13 +28,13 @@ sudo apt install npm
 # Step 3: Clone and Build JavaScript Project
 Clone the Repository
 ```bash
-git clone 
+git clone https://github.com/Rakesh121k/newmewjavascript.git
 ```
 
 
 Navigate to JavaScript Project Directory
 ```bash
-cd 
+cd newmewjavascript/
 ```
 
 Install Project Dependencies

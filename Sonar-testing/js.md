@@ -28,13 +28,13 @@ sudo apt install npm
 # Step 3: Clone and Build JavaScript Project
 Clone the Repository
 ```bash
-git clone https://github.com/Rishitha2707/Build-Tasks.git
+git clone 
 ```
 
 
 Navigate to JavaScript Project Directory
 ```bash
-cd Build-Tasks/JS-code/
+cd 
 ```
 
 Install Project Dependencies

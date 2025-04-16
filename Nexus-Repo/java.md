@@ -11,7 +11,7 @@ Connect the instance to the terminal.
  ```bash
      sudo apt update
      java                # Check Java (not installed)
-     sudo apt install openjdk-17-jre-headless
+     sudo apt install openjdk-11-jre-headless
  ```
 
 # Download Nexus Repository Manager and extract it
@@ -81,7 +81,7 @@ Default portnumber for nexus is 8081
 
 
 You can see nexus server:
-
+<img width="960" alt="Image" src="https://github.com/user-attachments/assets/3925273e-5d95-4850-9b55-55c174ee5e81" />
 
 
 
@@ -107,7 +107,7 @@ Build Server (ubuntu@Build-server)
 
 # Step 2: Java Installation
     ```bash
-    sudo apt install openjdk-11-jre-headless
+    sudo apt install openjdk-17-jre-headless
     ```
 Java runtime (JRE) is required for running Maven builds.
 
@@ -191,4 +191,12 @@ After successful build and correct credentials in settings.xml, Maven uploads ar
 Refresh the nexus server
 Go to browse
 You can see the build java code here as:
+
+<img width="960" alt="Image" src="https://github.com/user-attachments/assets/a3aa2d0f-2c4e-449d-868d-a115ee73eabe" />
+
+<img width="960" alt="Image" src="https://github.com/user-attachments/assets/3ed06494-ae4d-41a4-a549-fc8a9ad04c2a" />
+
+<img width="960" alt="Image" src="https://github.com/user-attachments/assets/6d2cd492-3847-4ed7-a593-3e7a6b2088c1" />
+
+<img width="960" alt="Image" src="https://github.com/user-attachments/assets/f83df8c5-2eef-40af-b3ba-9e8b6386ab29" />
 

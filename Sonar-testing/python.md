@@ -62,7 +62,8 @@ sudo apt install python3-pytest
 
 git clone https://github.com/Rakesh121k/sample-python-codedeploy.git
 cd sample-python-codedeploy/
-==> In sample-python-codedeploy we added a file called sonar-project.properties
+
+# In sample-python-codedeploy we added a file called sonar-project.properties
 and added this content
 
 sonar.projectKey=sample-python-code
